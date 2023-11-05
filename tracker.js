@@ -9,6 +9,12 @@ $('.calorieSubmit').on('click', function(event){
     }
 });
 
+$('.calorieReset').on('click', function(event){
+    event.preventDefault();
+        resetCalories();
+        renderCalories();
+});
+
 //Gets calorie value from form and pushes to local storage or creates the needed local storage array
 function getCalorieAmount(){
     let calorieNumber = $('.calorieNumber').val();
@@ -49,3 +55,28 @@ Calorie bank - on reset get calories left whether + or - and push it into local 
 search local storage to see if theres already a value in there and if there is - take that value and add it with the current reset value and push
 it back into local storage - this can then be re rendered everytime reset is pressed and on page load
 */
+
+function resetCalories() {
+    let calorieBank = JSON.parse(window.localStorage.getItem('caloriesBank')) || [];
+    let calorieLeft = parseFloat($('.calorieAmount').text()); // Convert to a numeric value
+
+    let index = calorieBank.findIndex(item => item.CaloriesBank !== undefined);
+    if (index !== -1) {
+        // If the item with the key 'CaloriesBank' exists, update its value by adding/subtracting calorieLeft
+        calorieBank[index].CaloriesBank = parseFloat(calorieBank[index].CaloriesBank) + calorieLeft;
+    } else {
+        // If it doesn't exist, create a new item with the key 'CaloriesBank' and set it to calorieLeft
+        calorieBank.push({
+            "CaloriesBank": calorieLeft
+        });
+    }
+    window.localStorage.setItem('caloriesBank', JSON.stringify(calorieBank));
+
+    let bankedAmount = parseFloat(calorieBank[0].CaloriesBank);
+    $('.calorieBank').text(bankedAmount);
+
+    $('.calorieEaten').text(0);
+    $('.calorieAmount').text(0);
+    localStorage.removeItem('calories');
+    console.log("quick test");
+}

@@ -11,26 +11,26 @@
     <title>Calorie Tracker</title>
     </head>
 
-    <body>
-        <h1>Calorie Tracker</h1>
+    <body class="bodyWrapper">
+        <div class="wrapper">
+            <h1 class="title">Calorie Tracker</h1>
 
-        <h3>Calorie Bank:</h3>
-        <p class="calorieBank"></p>
+            <h3 class="calorieBankTitle">Calorie Bank:</h3>
+            <p class="calorieBank"></p>
 
-        <h3>Calories eaten this week:</h3>
-        <p class="calorieEaten"></p>
+            <h3 class="calorieEatenTitle">Calories eaten this week:</h3>
+            <p class="calorieEaten">0</p>
 
-        <h3>Calories left this week:</h3>
-        <p class="calorieAmount"></p>
+            <h3 class="calorieLeftTitle">Calories left this week:</h3>
+            <p class="calorieAmount">0</p>
 
-        <h3>Input calorie amount:</h3>
-        <form class="calorieForm">
-            <input type="number" class="calorieNumber">
-            <input type="submit" class="calorieSubmit">
-        </form>
-
-        <button type="button" class="btn btn-danger">Reset</button>
-
+            <h3 class="calorieFormTitle">Input calorie amount:</h3>
+            <form class="calorieForm">
+                <input type="number" class="calorieNumber form-control">
+                <input type="submit" class="calorieSubmit btn btn-primary">
+                <button type="button" class="btn btn-danger calorieReset">Reset</button>
+            </form>
+        </div>
 
 
 
